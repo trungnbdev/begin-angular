@@ -1,0 +1,64 @@
+<div>
+  <h2>1.</h2>
+  <div>
+    @if (age) {
+    <p class="text-center text-2xl font-bold">- Tuổi: {{ age }}</p>
+    }@else {
+    <p class="text-center text-2xl font-bold">Chưa có tuổi</p>
+    }
+  </div>
+  <h2>2.</h2>
+  <div>
+    <img [src]="avatar" width="150" height="150" alt="avatar" />
+  </div>
+  <h2>3.</h2>
+  <div>
+    @if(skills.length > 0) {
+    <h2>Kỹ năng:</h2>
+    @for(skill of skills; track skill) {
+    <p>{{ skill }}</p>
+    } }
+  </div>
+  <h2>4.</h2>
+  <button (click)="handleClick()">Click me</button>
+  <p>The user's occupation is {{ occupation() }}</p>
+  <h2>5.</h2>
+  @defer {
+  <p>Future comments</p>
+  }@placeholder {
+  <p>Future comments</p>
+  } @loading (minimum 2s) {
+  <p>Loading comments...</p>
+  }
+  <h2>6.</h2>
+  <div style="width: 200px; height: 200px; position: relative">
+    <img ngSrc="{{ avatar }}" fill="true" alt="avatar" />
+  </div>
+  <h2>7.</h2>
+  <form (ngSubmit)="onSubmitForm($event)" [formGroup]="profileForm">
+    <h3>Thông tin nhân viên:</h3>
+    <div>
+      <label for="name">Tên:</label>
+      <input id="name" type="text" formControlName="name" />
+      @if(profileForm.get('name')?.errors?.['required'] &&
+      (profileForm.get('name')?.touched || profileForm.get('name')?.dirty)) {
+      <p>Tên là bắt buộc</p>
+      }
+    </div>
+
+    <div>
+      <label for="age">Tuổi:</label>
+      <input id="age" type="number" formControlName="age" />
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" type="email" formControlName="email" />
+    </div>
+
+    <p>{{ profileForm.value.name }}</p>
+
+    <button type="submit" [disabled]="profileForm.invalid">Submit</button>
+  </form>
+  <user-card> Card Header </user-card>
+</div>

@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.auth-layout {
+  background-image: url("../assets/images/auth-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
